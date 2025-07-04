@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace="xml파일과 세트인 mapper interface의 풀 네임이 들어가야 한다. -->
+<mapper namespace="com.green.practicememoserver2.MemoMapper">
+
+<!--C-->
+    <insert id="save">
+        INSERT INTO memo
+        SET title = #{title},
+            content = #{content}
+    </insert>
+
+<!--R-->
+
+<!--U-->
+    <update id="modify">
+        UPDATE memo
+        SET title = #{title},
+        content = #{content}
+        WHERE id = #{id}
+    </update>
+<!--D-->
+
+</mapper>
