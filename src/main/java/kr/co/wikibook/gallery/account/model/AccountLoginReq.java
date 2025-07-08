@@ -1,4 +1,4 @@
-package kr.co.wikibook.gallery.common.account.model;
+package kr.co.wikibook.gallery.account.model;
 
 import lombok.Getter;
 
