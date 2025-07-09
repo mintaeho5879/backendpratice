@@ -9,4 +9,5 @@ public class CartGetRes {
     private int price;
     private String imgPath;
     private int discountPer;
+    private int itemId;
 }
