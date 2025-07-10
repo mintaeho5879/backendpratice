@@ -15,9 +15,15 @@
         WHERE c.member_id = #{memberId}
     </select>
 
-    <delete id="deleteByMemberIdAndItemId">
+    <delete id="deleteByCartIdAndMemberId">
         DELETE
         FROM carts
-        WHERE member_id = #{memberId} and item_id = #{itemId}
+        WHERE id = #{cartId} and member_id = #{memberId}
+    </delete>
+
+    <delete id="deleteByMemberId">
+        DELETE
+        FROM carts
+        WHERE member_id = #{memberId}
     </delete>
 </mapper>
