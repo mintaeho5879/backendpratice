@@ -5,9 +5,7 @@ import kr.co.wikibook.gallery.cart.CartMapper;
 import kr.co.wikibook.gallery.item.ItemMapper;
 import kr.co.wikibook.gallery.item.ItemService;
 import kr.co.wikibook.gallery.item.model.ItemGetRes;
-import kr.co.wikibook.gallery.order.model.OrderItemPostDto;
-import kr.co.wikibook.gallery.order.model.OrderPostDto;
-import kr.co.wikibook.gallery.order.model.OrderPostReq;
+import kr.co.wikibook.gallery.order.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -54,5 +52,17 @@ public class OrderService {
         cartMapper.deleteByMemberId(logginedMemberId);
 
         return 1;
+
+        }
+
+    public List<OrderGetRes> getOrders(int memberId) {
+        return orderMapper.findAllByMemberIdOrderByIdDesc(memberId);
+    }
+    public OrderDetailGetRes detail(OrderDetailGetReq req) {
+        OrderDetailGetRes result = orderMapper.findByOrderIdAndMemberId(req);
+        List<OrderDetailDto> items = orderItemMapper.findAllByOrderId(req.getOrderId());
+        result.setItems(items);
+        log.info("result:{}", result);
+        return result;
     }
 }
